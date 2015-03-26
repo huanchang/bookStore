@@ -1,6 +1,0 @@
-Customer Info
-Customer ID: 0
-Customer Email: 
-Customer name:  
-Street: , ,  
-Customer balance: 0.0

@@ -1,6 +1,6 @@
 package bookStore;
 
-import java.io.FileOutputStream;
+import java.io.*;
 import java.io.PrintWriter;
 
 public class Address {
@@ -9,10 +9,10 @@ public class Address {
 	private String state;
 	private String zipcode;
 	Address(){
-		street = new String("");
-		city = new String("");
-		state = new String("");
-		zipcode = new String( "" );
+		street = new String("Unknow");
+		city = new String("N/A");
+		state = new String("N/A");
+		zipcode = new String( "N/A" );
 	}
 	Address( String str, String c, String sta, String zip ){
 		street = str;
@@ -22,11 +22,11 @@ public class Address {
 	}
 	
 	public void print(){
-		System.out.println("Street: " + street + ", " + city + ", " + state + " " + zipcode);
+		System.out.println("Address: " + street + ", " + city + ", " + state + " " + zipcode);
 	}
 	
 	public void print( PrintWriter out ){
-		out.println("Street: " + street + ", " + city + ", " + state + " " + zipcode);
+		out.print( "," + street + "," + city + "," + state + "," + zipcode);
 	}
 	
 }
