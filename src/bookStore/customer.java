@@ -64,7 +64,7 @@ public class customer {
 		out.print( "," + email );
 		out.print( "," + firstName + "," + lastName );
 		address.print( out );
-		out.println( "," + balance + this.createDate + "," + this.lastModifyDate );
+		out.println( "," + balance + "," + this.createDate.getTime() + "," + this.lastModifyDate.getTime() );
 		
 	}
 	

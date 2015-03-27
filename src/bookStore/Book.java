@@ -29,7 +29,7 @@ public class Book {
 		lastModifyDate = new Date( System.currentTimeMillis() );
 	}
 	
-	Book( int ID, String Title, String Author, String Pub, String T, double p, double dis){
+	Book( int ID, String Title, String Author, String T, String Pub, double p, double dis){
 		// constructor with arguments
 		id = ID;
 		title  = Title;
@@ -59,8 +59,8 @@ public class Book {
 	
 	public void print( PrintWriter  out ){
 		// write out book information into file
-		out.println( "B," );
-		out.print( "title: " + title + "," + type + "," + publisher + ","+ publishDate );
+		out.print( "B," );
+		out.print( title + "," + author + "," + type + "," + publisher + ","+ publishDate );
 		out.println( "," + price +"," + discount );
 		
 	}

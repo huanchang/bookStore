@@ -65,46 +65,43 @@ public class store {
 			Books.get( i ).print();
 		}
 	}
-	
-	public customer loadCustomer( String line){
-		// load a new customer from string
-		// Not finished
-		customer newCustomer  = new customer();
-		return newCustomer;
-	}
-	
-	public Book loadBook( String line){
-		// load a new Book from string
-		// Not finished
-		Book newBook = new Book();
-		return newBook;
-	}
-	
+		
 	
 	public void readFromFile( String fileName){
 		// load data from local file
 		Path path = Paths.get( fileName );
-		try( BufferedReader reader  = Files.newBufferedReader( path, ENCODING)){
-			String line = null;
-			while( ( line = reader.readLine() ) != null ){
-				// import data from file
-				if ( line.matches("C(.*)") ){
-					System.out.println(" Customer: "+ line);	
-					Customers.add( loadCustomer( line ) );
-					++customerNO;
-				}
-				else if  ( line.matches("B(.*)") ){
-					System.out.println(" Book: "+ line);
-					Books.add( loadBook( line ) );
-					++bookNO;
-				}
+		// check if the database file exists
+		File f = new File( fileName );
+		
+		if(f.exists() && !f.isDirectory()) {
+			
+			// create a new retriver instance
+			retriver newRetriver = new retriver();
+			
+			try( BufferedReader reader  = Files.newBufferedReader( path, ENCODING)){
+				String line = null;
+				while( ( line = reader.readLine() ) != null ){
+					// import data from file
+					if ( line.matches("C(.*)") ){
+						System.out.println(" Customer: "+ line);
+						Customers.add( newRetriver.retriveCustomer( line ) );
+						++customerNO;
+					}
+					else if  ( line.matches("B(.*)") ){
+						System.out.println(" Book: "+ line);
+						Books.add( newRetriver.retriveBook( line ) );
+						++bookNO;
+					}
+					
+				}//while
 				
-			}//while
+			}
+			catch( Exception e){
+				e.printStackTrace();
+			}
 			
 		}
-		catch( Exception e){
-			e.printStackTrace();
-		}
+		
 		
 	}
 	
